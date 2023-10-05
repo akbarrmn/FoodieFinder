@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector'
 import { Link, useParams } from 'react-router-dom'
 import { fetchDetailMeals, fetchProducts } from '../../store/ProductSlices'
@@ -19,12 +19,20 @@ const DetailProduct = ({ location }: Props) => {
         dispatch(fetchProducts())
     }, [dispatch])
 
-    const rest: Array = Object.keys(detailMeals).length !== 0 ? detailMeals[0].strInstructions.split(/\r?\n/) : []
+    const rest = Object.keys(detailMeals).length !== 0 ? detailMeals[0].strInstructions.split(/\r?\n/) : []
 
-    let items = []
-    for (let item = 0; item < 20; item++) {
-        items[item] = { strIngredient: 'strIngredient' + item, strMeasure: 'strMeasure' + item }
-    }
+    // const Ingredients = Object.keys(detailMeals).length !== 0 ? Object.keys(detailMeals[0])
+    //     .filter((key) => key.includes("strIngredient") || key.includes("strMeasure"))
+    //     .reduce((obj, key) => {
+    //         return Object.assign(obj, {
+    //             [key] : detailMeals[0][key]
+    //         });
+    //     }, {}) : [] 
+
+    // let items = []
+    // for (let item = 0; item < 20; item++) {
+    //     items[item] = { strIngredient: 'strIngredient' + item, strMeasure: 'strMeasure' + item }
+    // }
 
     return (
         <div className='mt-36 w-full'>
@@ -46,34 +54,38 @@ const DetailProduct = ({ location }: Props) => {
                             <div className="divider before:bg-primary after:bg-primary mt-5"></div>
                             <div className='text-white'>
                                 <h1 className='text-white text-3xl font-semibold mb-5'>Ingredients</h1>
-                                {items.map((ts, index) => <p>{detailMeals[0][ts.strMeasure]} {detailMeals[0][ts.strIngredient]}</p>)}
-                                {/* <p>{detailMeals[0]?.strIngredient1}</p>
-                                <p>{detailMeals[0]?.strIngredient2}</p>
-                                <p>{detailMeals[0]?.strIngredient3}</p>
-                                <p>{detailMeals[0]?.strIngredient4}</p>
-                                <p>{detailMeals[0]?.strIngredient5}</p>
-                                <p>{detailMeals[0]?.strIngredient6}</p>
-                                <p>{detailMeals[0]?.strIngredient7}</p>
-                                <p>{detailMeals[0]?.strIngredient8}</p>
-                                <p>{detailMeals[0]?.strIngredient9}</p>
-                                <p>{detailMeals[0]?.strIngredient10}</p>
-                                <p>{detailMeals[0]?.strIngredient11}</p>
-                                <p>{detailMeals[0]?.strIngredient12}</p>
-                                <p>{detailMeals[0]?.strIngredient13}</p>
-                                <p>{detailMeals[0]?.strIngredient14}</p>
-                                <p>{detailMeals[0]?.strIngredient15}</p>
-                                <p>{detailMeals[0]?.strIngredient16}</p>
-                                <p>{detailMeals[0]?.strIngredient16}</p>
-                                <p>{detailMeals[0]?.strIngredient17}</p>
-                                <p>{detailMeals[0]?.strIngredient18}</p>
-                                <p>{detailMeals[0]?.strIngredient19}</p>
-                                <p>{detailMeals[0]?.strIngredient20}</p> */}
-                            </div>
+                                {
+                                    detailMeals.map((state) =>
+                                        <>
+                                            <p key={state.strIngredient1}>{`${state.strMeasure1} ${state.strIngredient1}`}</p>
+                                            <p key={state.strIngredient2}>{`${state.strMeasure2} ${state.strIngredient2}`}</p>
+                                            <p key={state.strIngredient3}>{`${state.strMeasure3} ${state.strIngredient3}`}</p>
+                                            <p key={state.strIngredient4}>{`${state.strMeasure4} ${state.strIngredient4}`}</p>
+                                            <p key={state.strIngredient5}>{`${state.strMeasure5} ${state.strIngredient5}`}</p>
+                                            <p key={state.strIngredient6}>{`${state.strMeasure6} ${state.strIngredient6}`}</p>
+                                            <p key={state.strIngredient7}>{`${state.strMeasure7} ${state.strIngredient7}`}</p>
+                                            <p key={state.strIngredient8}>{`${state.strMeasure8} ${state.strIngredient8}`}</p>
+                                            <p key={state.strIngredient9}>{`${state.strMeasure9} ${state.strIngredient9}`}</p>
+                                            <p key={state.strIngredient10}>{`${state.strMeasure10} ${state.strIngredient10}`}</p>
+                                            <p key={state.strIngredient11}>{`${state.strMeasure11} ${state.strIngredient11}`}</p>
+                                            <p key={state.strIngredient12}>{`${state.strMeasure12} ${state.strIngredient12}`}</p>
+                                            <p key={state.strIngredient13}>{`${state.strMeasure13} ${state.strIngredient13}`}</p>
+                                            <p key={state.strIngredient14}>{`${state.strMeasure14} ${state.strIngredient14}`}</p>
+                                            <p key={state.strIngredient15}>{`${state.strMeasure15} ${state.strIngredient15}`}</p>
+                                            <p key={state.strIngredient16}>{`${state.strMeasure16} ${state.strIngredient16}`}</p>
+                                            <p key={state.strIngredient17}>{`${state.strMeasure17} ${state.strIngredient17}`}</p>
+                                            <p key={state.strIngredient18}>{`${state.strMeasure18} ${state.strIngredient18}`}</p>
+                                            <p key={state.strIngredient19}>{`${state.strMeasure19} ${state.strIngredient19}`}</p>
+                                            <p key={state.strIngredient20}>{`${state.strMeasure20} ${state.strIngredient20}`}</p>
+                                        </>
+                                    )
+                                }
 
+                            </div>
                             <div className="divider before:bg-primary after:bg-primary mt-5"></div>
                             <h1 className='text-white text-3xl font-semibold'>Method</h1>
                             <div className='flex flex-col gap-4 mt-5 mb-10'>
-                                {rest.map((values: string[], index: number) =>
+                                {rest.map((values, index) =>
                                     <div className='flex gap-2' key={index + 112}>
                                         <p className='text-white'>{index + 1}.</p>
                                         <p className='text-white'>{values}</p>
@@ -96,7 +108,6 @@ const DetailProduct = ({ location }: Props) => {
                         </div>
                     </div>
                 </>
-
             }
         </div >
     )

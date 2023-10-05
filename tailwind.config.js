@@ -26,21 +26,7 @@ export default {
     },
   },
   daisyui: {
-    themes: [
-      {
-        mytheme: {
-          "primary": "#DDE3EC",
-          "secondary": "#f7c876",
-          "accent": "#a6baf4",
-          "neutral": "#292e33",
-          "base-100": "white",
-          "info": "#72afe4",
-          "success": "#28cc72",
-          "warning": "#efc439",
-          "error": "#e24648",
-        },
-      },
-    ],
+    themes: false,
   },
   plugins: [require("daisyui")],
 }
