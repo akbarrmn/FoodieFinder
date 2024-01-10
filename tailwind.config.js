@@ -22,11 +22,15 @@ export default {
       },
       rotate: {
         '20': '20deg',
+      },
+      content:{
+        'food': "url('/src/assets/food.svg')",
       }
     },
   },
   daisyui: {
     themes: false,
+    darkTheme:false
   },
   plugins: [require("daisyui")],
 }

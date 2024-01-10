@@ -37,3 +37,12 @@ input[type="search"]::-webkit-search-cancel-button{
     background:#6e1e36;
     border-radius:10px
 }
+
+.swiper-slide {
+    width: 300px;
+}
+
+.youtube {
+    width: 900px !important;
+    height: 450px !important;
+}

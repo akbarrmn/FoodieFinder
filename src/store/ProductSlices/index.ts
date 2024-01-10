@@ -52,14 +52,15 @@ export const fetchDetailMeals = createAsyncThunk
         }
     )
 
-export const filterByName = createAsyncThunk
-    ('product/filterByName',
-        async (data: unknown) => {
+
+export const fetchRandomMeals = createAsyncThunk
+    ('product/fetchRandomMeals',
+        async () => {
             try {
                 const response = await axios({
                     method: "GET",
-                    url: `${local_url}/search.php?s=${data}`,
-                })
+                    url: `${local_url}/search.php?s=a`,
+                })  
                 return response.data.meals;
             } catch (error: any) {
                 return error?.response.data
@@ -128,14 +129,14 @@ const productSlice = createSlice({
             })
 
         builder
-            .addCase(filterByName.pending, (state) => {
+            .addCase(fetchRandomMeals.pending, (state) => {
                 state.loading = true
             })
-            .addCase(filterByName.fulfilled, (state, action: PayloadAction<DetailMeals[]>) => {  
+            .addCase(fetchRandomMeals.fulfilled, (state, action: PayloadAction<DetailMeals[]>) => {  
                 state.loading = false
                 state.detailMeals = action.payload
             })
-            .addCase(filterByName.rejected, (state, action) => {
+            .addCase(fetchRandomMeals.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.payload
             })
